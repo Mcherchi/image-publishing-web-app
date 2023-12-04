@@ -1,0 +1,6 @@
+<tr class="image-item" data-id="{{image.getId()}}" data-title="{{ image.getTitle() }}" data-date="{{ image.getLoadDate() | date('Y-m-d')  }}">
+    <td><img src="{{ image.getImageUrl() }}" alt="{{ image.title }}" style="width: 100%; max-width: 100px; max-height: 100px;"  data-id="{{image.getId()}}"></td>
+    <td>{{ image.getTitle() }}</td>
+    <td>{{ image.getLoadDate() | date('Y-m-d') }}</td>
+    <td> <button class="btn exclude-button">Remove</button></td>
+</tr>

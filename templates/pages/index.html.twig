@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Image publishing app
+{% endblock %}
+
+{% block body %}
+    <section>
+       <div class="mt-5">
+            <div class="container-lg py-5 bg-main bg-gradient rounded shadow px-3 mt-5 mt-lg-0">   
+                <div class="d-flex flex-column flex-lg-row align-items-lg-center">
+                <span id="toggleViewButton" class="me-lg-2" style="font-size: 30px";>
+                    <i id="toggleIcon" class="fas fa-th"></i> 
+                </span>
+                 <input type="text" id="searchInput" class="form-control form-control-sm me-2" placeholder="Cerca per titolo">
+                    <div class="input-group">
+                        <select id="sortSelect" class="form-select form-select-sm me-2">
+                        <option value="titleAsc">Titolo (A-Z)</option>
+                        <option value="dateDesc">Data (più recente)</option>
+                        <option value="titleDesc">Titolo (Z-A)</option>
+                        <option value="dateAsc">Data (meno recente)</option>
+                        </select>
+                    </div>
+                </div>
+                <button id="recoverImagesButton" class="btn">Recupera immagini escluse</button>
+                <button class="btn"><a href="{{ path('RandomImages') }}">Mostra 10 immagini random</a></button>
+                <button class="btn"><a href="{{ path('Homepage') }}">Mostra Tutte</a></button>
+            </div>
+        </div>
+
+
+    <div class="container px-5 my-5">
+        
+        <div id="gridView" class="row gx-5">
+            {% for image in pagination %}
+                {% include 'components/card.html.twig' with {'image': image} %}
+            {% endfor %}
+        </div>
+
+        <div class="container" id="listView" style="display:none;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Image</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    {% for image in pagination %}
+                        {% include 'components/list_item.html.twig' with {'images': pagination} %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+    </section>
+
+{% endblock %}

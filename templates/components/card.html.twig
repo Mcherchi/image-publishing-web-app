@@ -1,0 +1,10 @@
+<div class="col-lg-4 col-md-6 col-sm-12 mb-5 image-item" data-id="{{image.getId()}}" data-title="{{ image.getTitle() }}" data-date="{{ image.getLoadDate() | date('Y-m-d') }}">
+  <div class="card" style="width: 18rem;">
+    <img src="{{ image.getImageUrl() }}" class="card-img-top img-fluid" alt="..." style="height: 200px; object-fit: top;">
+    <div class="card-body text-center">
+      <h5 class="card-title">{{ image.getTitle() }}</h5>
+      <p>Data: {{ image.getLoadDate() | date('Y-m-d') }}</p>
+      <button  class="btn exclude-button">Remove</button>
+    </div>
+  </div>
+</div>
